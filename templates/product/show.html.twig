@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<br>
+<h1 class="d-flex justify-content-center">Product Stock:</h1>
+<br>
+<div class="container d-flex justify-content-center">
+    <h1> {{ product.stock }} </h1>
+    <br>  
+</div>
+<br>
+
+
+<div class="container d-flex justify-content-center">
+    <button type="button" class="minus btn btn-outline-danger value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value" style="margin-right: 10px;">-</button>
+            <input type="number" id="number" class="number" value="{{ product.stock }}" />  
+            
+    <button type="button" class="plus btn btn-outline-success value-button" id="increase" onclick="increaseValue()" value="Increase Value" style="margin-left: 10px;">+</button>
+</div>
+<br>
+
+<div class="container d-flex justify-content-center">
+    {# <form action="show.html.twig" method="get"> #}
+        <input type="submit" class="btn btn-success" id="submit"></input>
+    {# </form> #}
+</div>
+
+{% block javascripts %}
+    <script src="{{asset('js/product.js')}}"></script>
+{% endblock %}
+
+{% endblock %}

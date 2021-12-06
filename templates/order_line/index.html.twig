@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <h3>{{ message }}</h3>
+        </div>
+    {% endfor %}
+
+    <br>
+    <div class="container">
+        <h2>OrderLine Edit:</h2>
+        <br>
+        <table id="articles" class="table table-striped">
+            <thead>
+                <tr>
+                    <td>OrderLine Id</td>
+                    <td>Product</td>
+                    <td>Count</td>
+                    <td>Total Price</td>
+                    <td>Discount</td>
+                    <td>Payable Price</td>
+                    <td>Order</td>
+                    <td>Update</td>
+                    <td>Delete</td>
+                    <td><a href="{{ path('order_line.create')}}">Create</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for orderLine in orderLined %}
+                {% set totalPrice = orderLine.totalPrice %}
+                    {% set totalPrice = totalPrice - orderLine.discount %}
+                    <tr>
+                        <td>{{ orderLine.id }}</td>
+                        <td>{{ orderLine.product }}</td>
+                        <td>{{ orderLine.count }}</td>
+                        <td>{{ orderLine.totalPrice }} EUR</td>
+                        <td>{{ orderLine.discount }} EUR</td>
+                        <td>{{ totalPrice }} EUR</td>
+                        <td>{{ orderLine.orderL }}</td>
+                        <td>
+                            <a id="update" class="btn btn-outline-secondary" href="{{ path('order_line.update', {id: orderLine.id} )}}">Update</a>
+                        </td>
+                        <td>
+                            <a id="delete" class="btn btn-outline-danger" href="{{ path('order_line.remove', {id: orderLine.id} )}}">Delete</a>
+                        </td>
+                        <td>
+                            <a id="create" class="btn btn-outline-success" href="{{ path('order_line.create')}}">Create</a>
+                        </td>
+                        <td></td>
+                    </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {% block javascripts %}
+        <script src="{{asset('js/script.js')}}"></script>
+    {% endblock %}
+
+{% endblock %}
+

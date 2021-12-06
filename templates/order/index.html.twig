@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        <h3>{{ message }}</h3>
+    </div>
+{% endfor %}
+
+<br>
+<div class="container">
+    <h2>Order Edit:</h2>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Code Id</td>
+                <td>Order Code</td>
+                <td>Order Date</td>
+                <td>Costumer Name</td>
+                <td>Description</td>
+                <td>Total Amount</td>
+                <td><a href="{{path('order_line.edit')}}">Order Line</a></td>
+                {# <td></td> #}
+                <td>Update</td>
+                <td>Delete</td>
+                <td>Create</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in ordere %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.orderCode }}</td>
+                <td>{{ order.orderDate|date('d-m-Y') }}</td>
+                <td>{{order.costumerName}}</a></td>
+                <td>{{ order.description }}</td>
+                <td>{{ order.totalAmount }}</td>
+                <td>{{ order.orderLines }}</td>
+                {# <td>
+                    <a class="btn btn-primary" href="">{{ order.orderLines }}</a>
+                </td> #}
+                <td>
+                    <a class="btn btn-outline-secondary" href="{{ path('order.update', {id: order.id} )}}">Update</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-danger" href="{{ path('order.remove', {id: order.id} )}}">Delete</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-success" href="{{ path('order.create')}}">Create</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+{% endblock %}
+
+

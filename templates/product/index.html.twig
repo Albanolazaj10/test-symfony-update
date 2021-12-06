@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% for message in app.flashes('success') %}
+    <div class="alert alert-success">
+        <h3>{{ message }}</h3>
+    </div>
+{% endfor %}
+
+<br>
+<div class="container">
+    <h2>Product Edit:</h2>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Code Id</td>
+                <td>Product Name</td>
+                <td>Product Code</td>
+                <td>Product Price</td>
+                <td>Product Stock</td>
+                <td>Product Description</td>
+                <td>Update</td>
+                <td>Delete</td>
+                <td>Create</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in producte %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{product.name}}</td>
+                <td>{{ product.code }}</td>
+                <td>{{ product.price }}</td>
+                <td><a href="{{ path('product.show-product', {id: product.id} )}}">{{ product.stock }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <a class="btn btn-outline-secondary" href="{{ path('product.update', {id: product.id} )}}">Update</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-danger" href="{{ path('product.remove', {id: product.id} )}}">Delete</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-success" href="{{ path('product.create')}}">Create</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

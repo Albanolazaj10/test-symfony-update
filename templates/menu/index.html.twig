@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<!--  section -->
+{# <section class="playlist-section spad">
+	<div class="container-fluid">
+		<div class="section-title">
+			<h2>Playlists</h2>
+		</div>
+		<div class="container">
+			<ul class="playlist-filter controls">
+				<li class="control" data-filter=".Product1">Product 1</li>
+				<li class="control" data-filter=".Product2">Product 2</li>
+				<li class="control" data-filter=".Product3">Product 3</li>
+				<li class="control" data-filter=".Product4">Product 4</li>
+				<li class="control" data-filter="all">All Products</li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+		<div class="row playlist-area">
+			{% for order in ordere %}
+				<div class="mix col-lg-3 col-md-4 col-sm-6 genres {{ order.orderLine }}">
+					<div class="playlist-item">
+						<img src="{{ asset('/images' ~ order.codeImage)}}" >
+						<h5>{{ order.description }} - EUR {{ order.totalAmount }}</h5>
+						<p>BestNr. {{ order.id }}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section> #}
+<!--  section end -->
+{% endblock %}
